@@ -21,7 +21,7 @@ app.post("/send-message", async (req, res) => {
       `https://graph.facebook.com/v19.0/${process.env.PHONE_NUMBER_ID}/messages`,
       {
         messaging_product: "whatsapp",
-        to: "917892356966",
+        to: "918073362052",
         type: "text",
         text: { body: message }
       },
