@@ -1,16 +1,15 @@
 // Smooth scroll + active link
 const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
 // Automatically add the 'reveal' class to sections for the fade effect
 document.querySelectorAll('section').forEach(section => {
   section.classList.add('reveal');
 });
 
-// ... rest of your existing JS code ...
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const targetId = link.getAttribute('href').slice(1).toLowerCase();
-    // Capitalize first letter to match your HTML IDs (e.g., #Contact)
     const formattedId = targetId.charAt(0).toUpperCase() + targetId.slice(1);
     const target = document.getElementById(formattedId);
 
@@ -26,7 +25,7 @@ navLinks.forEach(link => {
 
 // Scroll reveal using IntersectionObserver
 const sections = document.querySelectorAll('section');
-sections.forEach(sec => sec.classList.add('reveal')); // Automatically add reveal class
+sections.forEach(sec => sec.classList.add('reveal'));
 
 const observer = new IntersectionObserver(
   entries => {
@@ -42,32 +41,33 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Contact submit logic
-const form = document.querySelector('form');
+// WhatsApp Contact Form (Permanent & Safe)
+document.getElementById("whatsapp-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-if (form) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.textContent;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
+  const whatsappNumber = "917892356966"; // Business WhatsApp number
 
-    setTimeout(() => {
-      btn.textContent = 'Sent ✓';
-      btn.style.background = '#22c55e';
-      
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.textContent = originalText;
-        btn.style.background = '';
-        form.reset();
-      }, 1800);
-    }, 900);
-  });
-}
-// Simple featured photos slider
+  const text =
+    `New Property Inquiry\n\n` +
+    `Name: ${name}\n` +
+    `Phone: ${phone}\n` +
+    `Email: ${email || "Not provided"}\n` +
+    `Message: ${message || "No message"}`;
+
+  const whatsappURL =
+    `https://wa.me/${7892356966}?text=${encodeURIComponent(text)}`;
+
+  window.open(whatsappURL, "_blank");
+
+  document.getElementById("thank-you-message").style.display = "block";
+  this.reset();
+});
+
 // Simple featured photos slider
 const slideContainer = document.querySelector('.slides');
 const slideImages = document.querySelectorAll('.slides img');
@@ -97,23 +97,21 @@ if (slideContainer && slideImages.length > 0) {
     updateSlider();
   }
 
-  // start auto play
   function startAutoPlay() {
     stopAutoPlay();
-    autoPlayId = setInterval(goNext, 3000); // 3 seconds
+    autoPlayId = setInterval(goNext, 3000);
   }
 
   function stopAutoPlay() {
     if (autoPlayId) clearInterval(autoPlayId);
   }
 
-  // init
   updateSlider();
   startAutoPlay();
 
   nextBtn.addEventListener('click', () => {
     goNext();
-    startAutoPlay(); // restart timer after manual click
+    startAutoPlay();
   });
 
   prevBtn.addEventListener('click', () => {
@@ -121,7 +119,6 @@ if (slideContainer && slideImages.length > 0) {
     startAutoPlay();
   });
 
-  // optional: pause on hover
   const slider = document.querySelector('.slider');
   if (slider) {
     slider.addEventListener('mouseenter', stopAutoPlay);
