@@ -45,12 +45,12 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.getElementById("whatsapp-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+  const name = document.getElementById("name-").value.trim();
+  const phone = document.getElementById("phone-").value.trim();
+  const email = document.getElementById("email-").value.trim();
+  const message = document.getElementById("message-").value.trim();
 
-  const whatsappNumber = "917892356966"; // Business WhatsApp number
+  const whatsappNumber = "918073362052"; // Business WhatsApp number
 
   const text =
     `New Property Inquiry\n\n` +
@@ -60,7 +60,7 @@ document.getElementById("whatsapp-form").addEventListener("submit", function (e)
     `Message: ${message || "No message"}`;
 
   const whatsappURL =
-    `https://wa.me/${7892356966}?text=${encodeURIComponent(text)}`;
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
 
   window.open(whatsappURL, "_blank");
 
