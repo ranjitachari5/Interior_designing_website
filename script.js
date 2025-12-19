@@ -45,10 +45,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.getElementById("whatsapp-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const name = document.getElementById("name-").value.trim();
-  const phone = document.getElementById("phone-").value.trim();
-  const email = document.getElementById("email-").value.trim();
-  const message = document.getElementById("message-").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
   const whatsappNumber = "918073362052"; // Business WhatsApp number
 
